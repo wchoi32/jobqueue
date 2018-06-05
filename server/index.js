@@ -1,30 +1,13 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const axios = require('axios');
 const db = require('../database');
+
 const app = express();
 
-
-const apiCall = (data, callback) => {
-  let startDate = data[0];
-  let endDate = data[1];
-
-  axios
-  .get(url)
-  .then(response => {
-    callback(result);
-  })
-  .catch(error => {
-    console.log(error);
-  });
-}
+app.use(bodyParser.json());
 
 app.use(express.static(__dirname + '/../client/dist'));
 
-app.get('/api/:dateRange', function (req, res) {
+const port = process.env.PORT || 3000;
 
-});
-
-app.listen(3000, function() {
-  console.log('listening on port 3000!');
-});
+app.listen(port, () => console.log(`Server running on port ${port}`));
